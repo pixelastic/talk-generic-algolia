@@ -1,0 +1,86 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Superhero search</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.0/dist/instantsearch.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.0/dist/instantsearch-theme-algolia.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+  </style>
+</head>
+
+<body>
+
+  <div class="container mx-auto mt-8">
+    <div id="searchbox"></div>
+
+    <div class="flex flex-row flex-no-wrap">
+      <div class="w-1/4">
+        <h3>Powers</h3>
+        <div id="powers"></div>
+        <h3>Teams</h3>
+        <div id="teams"></div>
+        <!-- Here will be a sidebar -->
+      </div>
+      <div class="flex-auto">
+        <div id="results"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.0"></script>
+  <script>
+    const search = instantsearch({
+      appId: 'MXM0JWJNIW',
+      apiKey: 'ff7b0847d8705c279222272303e68527',
+      indexName: 'superheroes',
+      searchParameters: {
+        highlightPreTag: '<span class="font-bold text-blue">',
+        highlightPostTag: '</span>',
+      }
+    });
+
+    search.addWidget(
+      instantsearch.widgets.searchBox({
+        container: '#searchbox'
+      })
+    );
+
+    search.addWidget(
+      instantsearch.widgets.hits({
+        container: '#results',
+        templates: {
+          empty: "No results",
+          item: function(item) {
+            const name = item._highlightResult.name.value;
+            return `<div>${name} (${item.secretIdentities})`
+          }
+        }
+      })
+    );
+
+    search.addWidget(
+      instantsearch.widgets.refinementList({
+        container: '#powers',
+        attributeName: 'powers'
+      })
+    );
+
+    search.addWidget(
+      instantsearch.widgets.refinementList({
+        container: '#teams',
+        attributeName: 'teams'
+      })
+    );
+
+    search.start();
+  </script>
+</body>
+
+</html>
+

@@ -1,0 +1,7 @@
+// In the final build, all unused CSS classes will be removed using `purifycss`.
+// Because reveal.js adds its own classes at runtime, we need to split our CSS
+// declarations in two files.
+// - _unpure-before will contain all the content we don't want to "purify"
+// - _app will contain all the rest
+@import '_unpure-before';
+@import '_app';

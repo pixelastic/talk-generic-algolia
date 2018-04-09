@@ -1,0 +1,69 @@
+$colors:
+  purple-heart $purple-heart,
+  mulberry $mulberry,
+  radical-red $radical-red,
+  bittersweet $bittersweet,
+  koromiko $koromiko,
+  shamrock $shamrock,
+  java $java,
+  algolia-blue $algolia-blue,
+  royal-blue $royal-blue,
+  bunting $bunting,
+  titan-white $titan-white,
+  logan $logan,
+  deep-cove $deep-cove,
+  port-gore $port-gore,
+  east-bay $east-bay,
+  portage $portage,
+  blue-bell $blue-bell,
+  ghost $ghost,
+  athens-gray $athens-gray,
+  april-fools-purple $april-fools-purple,
+  trust $trust,
+  candor $candor,
+  care $care,
+  humility $humility,
+  grit $grit
+;
+
+@each $color in $colors {
+  $name: nth($color, 1);
+  $value: nth($color, 2);
+
+  // Text color
+  .#{$name} { color: $value }
+
+  // Transparent text
+  @for $i from 1 through 9 {
+    .#{$name}-#{$i}0 {
+      color: rgba($value, $i / 10); 
+    }
+  }
+
+  // Background color
+  .bg-#{$name} { background-color: $value }
+
+  // Transparent background color
+  @for $i from 1 through 9 {
+    .bg-#{$name}-#{$i}0 {
+      background-color: rgba($value, $i / 10); 
+    }
+  }
+
+  // Bullets
+  .bullet-#{$name}:before { content: "> "; color: #{$value} }
+
+  // Gradients from one color to another
+  @each $color_end in $colors {
+    $name_end: nth($color_end, 1);
+    $value_end: nth($color_end, 2);
+    
+    @if ($name != $name_end) {
+      .gradient-#{$name}-to-#{$name_end} {
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-image: linear-gradient(104deg, $value, $value_end);
+      }
+    }
+  }
+}

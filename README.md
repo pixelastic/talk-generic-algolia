@@ -1,2 +1,1 @@
-# talk-generic-algolia
-
+# jekyll-algolia presentation

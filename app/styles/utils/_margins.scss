@@ -1,0 +1,16 @@
+// MARGINS {{{
+.mta { margin-top: auto; }
+.mra { margin-right: auto; }
+.mba { margin-bottom: auto; }
+.mla { margin-left: auto; }
+.ma { margin-top: auto; margin-right: auto; margin-bottom: auto; margin-left: auto; }
+
+// All margins by 5% increment
+@for $i from 1 through 20 {
+  $margin: $i * 5;
+  .mt-#{$margin} { margin-top: $margin + %; }
+  .mr-#{$margin} { margin-right: $margin + %; }
+  .mb-#{$margin} { margin-bottom: $margin + %; }
+  .ml-#{$margin} { margin-left: $margin + %; }
+}
+// }}}
