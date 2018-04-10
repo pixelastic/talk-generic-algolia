@@ -11,9 +11,42 @@ section.slide--horizontal
     p Typos, plurals, synonyms
     p Allow creating this UI. Each character is a call
 
-section.slide--horizontal
+section.slide--horizontal(data-transition="fade-in")
   .h-100.flcnw.pa3
-    .fln.f1.lh-title.tl.b Algolia: Search as a Service
+    .fln.f1.lh-title.tl.b Backend implementation
     .fla.flcnw.h-100
       .fla.flc
-        | Explaining frontend/backend, API-based
+        img(src='./img/typical-backend.png')
+
+section.slide--horizontal(data-transition="fade-in")
+  .h-100.flcnw.pa3
+    .fln.f1.lh-title.tl.b Frontend implementation
+    .fla.flcnw.h-100
+      .fla.flc
+        img(src='./img/api-backend.png')
+
+// Existing ecosystem
+section.slide--horizontal
+  .h-100.flcnw.pa3
+    .fln.f1.lh-title.tl.b Current ecosystem
+    .fla.h-100.relative
+      a.absolute.top-15.left-15.no-underline.no-underline.bunting(href="https://stripe.com/")
+        +brick('3x1', 'port-gore', './img/saas/stripe.png', 'Payment', 'right')
+      a.absolute.top-45.left-10.no-underline.bunting(href="https://auth0.com/")
+        +brick('3x1', 'port-gore', './img/saas/auth0.png', 'Authentication', 'right')
+      a.absolute.top-75.left-15.no-underline.bunting(href="https://www.netlify.com/")
+        +brick('3x1', 'port-gore', './img/saas/netlify.svg', 'Hosting', 'right')
+
+      a.absolute.top-40.left-40.fragment.no-underline(href="https://www.algolia.com/")
+        +brick_algolia()
+
+      a.absolute.top-15.left-65.no-underline.bunting(href="https://www.twilio.com/")
+        +brick('3x1', 'port-gore', './img/saas/twilio.svg', 'Messages', 'left')
+      a.absolute.top-45.left-75.no-underline.bunting(href="https://www.pubnub.com/")
+        +brick('3x1', 'port-gore', './img/saas/pubnub.svg', 'Notifications', 'left')
+      a.absolute.top-75.left-65.no-underline.bunting(href="https://cloudinary.com/")
+        +brick('3x1', 'port-gore', './img/saas/cloudinary.svg', 'Images', 'left')
+    aside.notes
+      p Easy to solve at first, harder at scale
+      p Known, partly solved problems already
+      p Not your core business, focus on what value you bring

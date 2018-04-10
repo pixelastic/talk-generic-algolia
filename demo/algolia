@@ -1,32 +1,93 @@
 #!/usr/bin/env ruby
+
 require 'json'
 require 'algoliasearch'
 
-# Read files from disk
 records = JSON.parse(File.read('./superheroes.json'))
 
-# Init Algolia index
 Algolia.init(
   application_id: 'MXM0JWJNIW',
   api_key: '41b535f9a85974be0487f5b08c04c8ad'
 )
 index = Algolia::Index.new('superheroes')
 
-# Push records to index
-# index.add_objects!(records)
+index.add_objects!(records)
 
-# Configure relevance
-index.set_settings!(
-  searchableAttributes: %w[
-    name
-    secretIdentities
-    description
-  ],
-  customRanking: [
-    'desc(ranking.comicCount)'
-  ],
-  attributesForFaceting: %w[
-    powers
-    teams
-  ]
-)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##!/usr/bin/env ruby
+#require 'json'
+#require 'algoliasearch'
+
+## Read files from disk
+#records = JSON.parse(File.read('./superheroes.json'))
+
+## Init Algolia index
+#Algolia.init(
+#  application_id: 'MXM0JWJNIW',
+#  api_key: '41b535f9a85974be0487f5b08c04c8ad'
+#)
+#index = Algolia::Index.new('superheroes')
+
+## Push records to index
+## index.add_objects!(records)
+
+## Configure relevance
+#index.set_settings!(
+#  searchableAttributes: %w[
+#    name
+#    secretIdentities
+#    description
+#  ],
+#  customRanking: [
+#    'desc(ranking.comicCount)'
+#  ],
+#  attributesForFaceting: %w[
+#    powers
+#    teams
+#  ]
+#)
