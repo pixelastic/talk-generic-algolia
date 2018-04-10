@@ -6,10 +6,143 @@ html(lang="en")
     .reveal
       .slides.bg-white.lh-copy.bunting.f3.fw3
 
-        include ./slides/intro
-        include ./slides/algolia
-        include ./slides/demo
-        include ./slides/conclusion
+        // Tim Carry
+        section.slide--horizontal
+          .h-100.flcnw.pa3
+            .fln.f1.lh-title.tl.b Who am I?
+            .fla.flcnw.h-100
+              .fla.flrnw.h-50
+                .fln.w-50.flc
+                  img.br3.w-60(src='./img/avatar.jpg')
+                .fln.w-50.flcnw
+                  .fla.flcnw
+                    .fla.f-headline.b.flc Tim Carry
+                    .fln.f1.b.flc Software Engineer
+                  .fla.f-headline.b.algolia-blue.flc @pixelastic
+
+        // TITLE
+        section.slide--horizontal.slide--theme1
+          .bg-gradient-blue.white.h-100.flcnw.flc
+            .f-subheadline.lh-title.mh4.ph6
+              .db Fast and Relevant
+            .f2.lh-title.mh4.ph6
+              .db How search should be.
+
+        // Screencast demo
+        section.slide--horizontal
+          .h-100.flcnw.pa3
+            .fln.f1.lh-title.tl.b Algolia: Search as a Service
+            .fla.flcnw.h-100
+              .fla.flc
+                img.h-100(src='./img/movies.gif')
+
+        // // 3 steps
+        // section.slide--horizontal
+        //   .h-100.flcnw.pa3
+        //     .fln.f1.lh-title.tl.b Algolia in 3 steps
+        //     .fla.flcnw.h-100
+        //       .fla.flc.h-100
+        //         img.h-100(src='./img/3steps.png')
+
+        // Front-end implementation
+        section.slide--horizontal(data-transition="fade-in")
+          .h-100.flcnw.pa3
+            .fln.f1.lh-title.tl.b Frontend implementation
+            .fla.flcnw.h-100
+              .fla.flc
+                img(src='./img/api-backend.png')
+
+        // Existing ecosystem
+        // section.slide--horizontal
+        //   .h-100.flcnw.pa3
+        //     .fln.f1.lh-title.tl.b Current ecosystem
+        //     .fla.h-100.relative
+        //       a.absolute.top-15.left-15.no-underline.no-underline.bunting(href="https://stripe.com/")
+        //         +brick('3x1', 'port-gore', './img/saas/stripe.png', 'Payment', 'right')
+        //       a.absolute.top-45.left-10.no-underline.bunting(href="https://auth0.com/")
+        //         +brick('3x1', 'port-gore', './img/saas/auth0.png', 'Authentication', 'right')
+        //       a.absolute.top-75.left-15.no-underline.bunting(href="https://www.netlify.com/")
+        //         +brick('3x1', 'port-gore', './img/saas/netlify.svg', 'Hosting', 'right')
+
+        //       a.absolute.top-40.left-40.fragment.no-underline(href="https://www.algolia.com/")
+        //         +brick_algolia()
+
+        //       a.absolute.top-15.left-65.no-underline.bunting(href="https://www.twilio.com/")
+        //         +brick('3x1', 'port-gore', './img/saas/twilio.svg', 'Messages', 'left')
+        //       a.absolute.top-45.left-75.no-underline.bunting(href="https://www.pubnub.com/")
+        //         +brick('3x1', 'port-gore', './img/saas/pubnub.svg', 'Notifications', 'left')
+        //       a.absolute.top-75.left-65.no-underline.bunting(href="https://cloudinary.com/")
+        //         +brick('3x1', 'port-gore', './img/saas/cloudinary.svg', 'Images', 'left')
+
+        // LIVE DEMO
+        section.slide--horizontal.slide--theme1(data-transition='fade-out')
+          .bg-gradient-blue.white.h-100.flcnw.flc
+            .f-subheadline.lh-title.mh4.ph6 Live demo
+
+        // Marvel link
+        section.slide--horizontal(data-transition='fade-in')
+          .absolute.absolute-0.bg-cover.bg-top(style="background-image: url('./img/demo-marvel.gif')")
+          .absolute.bottom-1.right-0.left-0.flrnw.flc
+            a.white.f1.bg-black-90.pa3.br4(href="https://community.algolia.com/marvel-search/") https://community.algolia.com/marvel-search/
+
+        // InstantSearch family
+        section.slide--horizontal
+          .h-100.flcnw.pa3
+            .fln.f1.lh-title.tl.b InstantSearch
+            .fla.flcnw
+              .fla.flrnw
+                a.fln.w-third.flc(href="https://community.algolia.com/instantsearch.js/")
+                  img(src='./img/instantsearch/instantsearch-medal.svg')
+                .fln.w-two-thirds.flcnw.flc.f-subheadline
+                  .fln Library of search UI 
+                    .di.b widgets
+              .fln.flrw.flrspa.mb4
+                a.fln.w-third.flc(href="https://community.algolia.com/react-instantsearch/")
+                  img.mv3(src='./img/instantsearch/InstantSearch-React.svg')
+                a.fln.w-third.flc(href="https://community.algolia.com/vue-instantsearch/")
+                  img.mv3(src='./img/instantsearch/InstantSearch-Vue.svg')
+                a.fln.w-third.flc(href="https://community.algolia.com/angular-instantsearch/")
+                  img.mv3(src='./img/instantsearch/InstantSearch-Angular.svg')
+              .fln.flrw.mb4
+                a.fln.w-third.flc.ml-15(href="https://community.algolia.com/instantsearch-android/")
+                  img.mv2(src='./img/instantsearch/InstantSearch-Android.svg')
+                a.fln.w-third.flc.mr-15(href="https://community.algolia.com/instantsearch-ios/")
+                  img.mv2(src='./img/instantsearch/InstantSearch-iOS.svg')
+
+        // Ruby family
+        section.slide--horizontal
+          .h-100.flcnw.pa3
+            .fln.f1.lh-title.tl.b Algolia for Ruby
+            .fla.flcnw.flccv
+              .fln.flrnw.flrspa.h5
+                a.fln.w5.h5.relative(href="https://github.com/algolia/algoliasearch-client-ruby")
+                  .absolute-0.ma2.br3.shadow-1.flcnw.bg-ghost
+                    .fla.flc.h-100
+                      img.h-100(src="./img/algolia/languages/ruby.svg")
+                    .fln.bg-athens-gray.blue.ma2.tc.f2 Ruby
+                a.fln.w5.h5.relative(href="https://github.com/algolia/algoliasearch-rails")
+                  .absolute-0.ma2.br3.shadow-1.flcnw.bg-ghost
+                    .fla.flc.h-100
+                      img.h-100(src="./img/algolia/languages/rails.svg")
+                    .fln.bg-athens-gray.blue.ma2.tc.f2 Rails
+                a.fln.w5.h5.relative(href="https://community.algolia.com/jekyll-algolia/")
+                  .absolute-0.ma2.br3.shadow-1.flcnw.bg-ghost
+                    .fla.flc.h-100
+                      img.h-60(src="./img/algolia/languages/jekyll.png")
+                    .fln.bg-athens-gray.blue.ma2.tc.f2 Jekyll
+
+
+        // Questions
+        section.slide--horizontal.slide--theme1
+          .bg-gradient-blue.white.h-100.flcnw.flc
+            .f-headline
+              .di.c-contact.c-contact--email(data-name='email')
+                |tim@
+                .di.c-contact.c-contact--website(data-name='company')
+                  .di.c-contact.c-contact--twitter(data-name='twitter')
+                    |algolia
+                  |.com
+
 
         include ./partials/aside-horizontal
         include ./partials/aside-vertical

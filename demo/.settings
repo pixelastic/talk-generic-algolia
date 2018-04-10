@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require 'algoliasearch'
+Algolia.init(
+  application_id: 'O3F8QXYK6R',
+  api_key: '9fe83451c3b740380f51298676c708f7'
+)
+index = Algolia::Index.new('superheroes')
+
+index.set_settings!(
+  searchableAttributes: %w[name secretIdentities description],
+  customRanking: ['desc(ranking.comicCount)']
+)

@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'json'
+require 'algoliasearch'
+
+records = JSON.parse(File.read('./superheroes.json'))
+
+Algolia.init(
+  application_id: 'O3F8QXYK6R',
+  api_key: '9fe83451c3b740380f51298676c708f7'
+)
+index = Algolia::Index.new('superheroes')
+
+index.add_objects!(records)

@@ -1,6 +1,10 @@
 module.exports = {
+  extends: [
+    'algolia'
+  ],
   globals: {
     $: true,
-    Reveal: true
+    Reveal: true,
+    instantsearch: true
   }
 };
