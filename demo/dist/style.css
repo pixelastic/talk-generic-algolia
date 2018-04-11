@@ -1,0 +1,14 @@
+body {
+  width: 1200px;
+  margin: 1rem auto;
+}
+
+.ais-hits--item {
+  font-family: Arial;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+.ais-hits--item em {
+  color: blue;
+  font-weight: bold;
+}
