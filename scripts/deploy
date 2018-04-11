@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-destination="slides/talk-jekyll-algolia-show-and-tell/"
+destination="slides/algolia-atlanta-ruby-2018/"
 npm run build &&
 rsync \
   --recursive \
