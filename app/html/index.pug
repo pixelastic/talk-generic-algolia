@@ -74,10 +74,191 @@ html(lang="en")
         //       a.absolute.top-75.left-65.no-underline.bunting(href="https://cloudinary.com/")
         //         +brick('3x1', 'port-gore', './img/saas/cloudinary.svg', 'Images', 'left')
 
-        // LIVE DEMO
-        section.slide--horizontal.slide--theme1(data-transition='fade-out')
-          .bg-gradient-blue.white.h-100.flcnw.flc
-            .f-subheadline.lh-title.mh4.ph6 Live demo
+        // Data material
+        section.slide--horizontal
+          .h-100.flcnw.pa3
+            .fln.flrnw.h3.flrcv
+              .fln.f1 Search into all the
+              img.fln.h-100.mh3(src='./img/logo-marvel.svg')
+              .fln.f1 superheroes
+            .fla.flrnw
+              .fla.flc
+                pre.bg-near-black.pa3.lh-copy.tl.f3
+                  code.language-js
+                    |[
+                    |  {
+                    |    "name": "Iron Man",
+                    |    "secretIdentity": "Tony Stark",
+                    |    "description": "Wounded, captured and forced to […]",
+                    |    "powers": ["Energy repulsors", […], "Super strength"],
+                    |    "teams": ["Avengers", […], "Stark Industries"],
+                    |    "adventureCount": 2903
+                    |    […]
+                    |  },
+                    |  […]
+                    |]
+            aside.notes
+              p JSON files on disk
+              p Schemaless files, but semi-structured data
+              p Any attributes, nested ones
+
+        // Dashboard upload
+        section.slide--horizontal
+          .h-100.flcnw.pa3
+            .fln.f1.lh-title.tl.b Dashboard or API
+            .fla.flrnw
+              .fln.w-third.flcnw.flc
+                img(src='./img/dashboard-index.png')
+              .fln.w-two-thirds.flc
+                .f1.scale-130.tl
+                  .db 
+                    .b.di All actions 
+                    .di are doable either
+                  .db through 
+                    .di.b.algolia-blue the dashboard
+                  .db or 
+                    .di.b.shamrock the API
+            aside.notes
+              p Demo through dashboard will be too easy
+              p Let's see some code
+
+        // Pushing data
+        section.slide--horizontal
+          .h-100.flcnw.pa3
+            .fln.f1.lh-title.tl.b Pushing data with Ruby
+            .fla.flcnw.flc
+              pre.bg-near-black.pa3.lh-copy.tl.w-100
+                code.language-ruby
+                  |require 'json'
+                  |require 'algoliasearch'
+              pre.bg-near-black.pa3.lh-copy.tl.w-100.fragment
+                code.language-ruby
+                  |# Init Algolia index
+                  |Algolia.init(
+                  |  application_id: 'O3F8QXYK6R', 
+                  |  api_key: '476071478e45b023b7ff7d8ba8'
+                  |)
+                  |index = Algolia::Index.new('superheroes')
+              pre.bg-near-black.pa3.lh-copy.tl.w-100.fragment
+                code.language-ruby
+                  |# Read files from disk
+                  |records = JSON.parse(File.read('./superheroes.json'))
+              pre.bg-near-black.pa3.lh-copy.tl.w-100.fragment
+                code.language-ruby
+                  |# Push records to index
+                  |index.add_objects!(records)
+
+        // Easy search in dashboard
+        section.slide--horizontal.mb4
+          .h-100.flcnw.pa3.mb4
+            .fln.f1.lh-title.tl.b Testing your queries in the explorer
+            .fla.flrnw
+              img.w-100(src='./img/dashboard-search-no-settings.gif')
+
+        // Configuring settings
+        section.slide--horizontal
+          .h-100.flcnw.pa3
+            .fln.f1.lh-title.tl.b Configuring your index
+            .fla.flrnw
+              .fln.w-50.flcnw.flc
+                .tl.f1.flcnw.flcspa
+                  .bullet-shamrock Fields to search
+                  .bullet-shamrock Order of importance
+                  .bullet-shamrock Ranking attribute
+                  .bullet-shamrock Filters
+                  .bullet-shamrock More...
+              .fln.w-50.flc
+                .db.fla.pa5
+                  pre.bg-near-black.pa3.lh-copy.tl.f3
+                    code.language-ruby
+                      |index.set_settings!(
+                      |  searchableAttributes: [
+                      |     'name', 
+                      |     'secretIdentities',
+                      |     'description'
+                      |  ],
+                      |  customRanking: [
+                      |   'desc(ranking.comicCount)'
+                      |  ],
+                      |  attributesForFaceting: [
+                      |   'powers',
+                      |   'team',
+                      |   'authors'
+                      |  ]
+                      |)
+
+        // Easy search in dashboard
+        section.slide--horizontal.mb4
+          .h-100.flcnw.pa3.mb4
+            .fln.f1.lh-title.tl.b Now with better relevance
+            .fla.flrnw.flc
+                img.w-100(src='./img/dashboard-search-settings.gif')
+
+        // Search UI Components
+        section.slide--horizontal
+          -
+            var widgets = [
+              {name: 'Searchbar', icon: 'searchbar'},
+              {name: 'Results', icon: 'results'},
+              // {name: 'Pagination', icon: 'pagination'},
+              {name: 'Sort', icon: 'sort'},
+              {name: 'Filters', icon: 'refinementlist'},
+              // {name: 'Menu', icon: 'menu'},
+              {name: 'Slider', icon: 'slider'},
+              {name: 'Toggle', icon: 'toggle'},
+            ]
+          .h-100.flcnw.pa3
+            .fln.f1.lh-title.tl.b Common components of a search UI
+            .fla.flrnw.bg-right.bg-contain(style="background-image:url('./img/instantsearch/ui-animation.gif')")
+              .fln.flcnw.w-50.flccv.pa5
+                .fla.flcnw.flcspa
+                  each widget in widgets
+                    .fln.flrnw
+                      .fln.flc
+                        img.h3(src=`./img/instantsearch/widgets/widget-${widget.icon}.svg`)
+                      .fla.f1.flcnw.flccv.tl.pl3.f2= widget.name
+
+        // InstantSearch code example
+        section.slide--horizontal(data-transition='fade-out')
+          .h-100.flcnw.pa3
+            .fln.f1.lh-title.tl.b InstantSearch example
+            .fla.flrnw
+              .fln.w-50.flcnw.flcspa.ph2
+                pre.bg-near-black.ph3.pv1.lh-copy.tl.f3
+                  code.language-html
+                    |&lt;body&gt;
+                    |  &lt;script src="./instantsearch.js"&gt;&lt;/script&gt;
+                    |  &lt;div id="searchbox"&gt;&lt;/div&gt;
+                    |  &lt;div id="teams"&gt;&lt;/div&gt;
+                    |  &lt;div id="hits"&gt;&lt;/div&gt;
+                    |&lt;/body&gt;
+                pre.fln.bg-near-black.ph3.pv1.lh-copy.tl.f3.fragment
+                  code.language-js
+                    |let search = instantsearch({
+                    |  appId: 'O3F8QXYK6R',
+                    |  apiKey: '78e45b023b7ff7d8ba88c59c9db19890',
+                    |  indexName: 'superheroes'
+                    |});
+              .fln.w-50.ph2
+                pre.bg-near-black.ph3.pv1.lh-copy.tl.f3.fragment
+                  code.language-js
+                    |search.addWidget(
+                    |  instantsearch.widgets.searchBox({
+                    |    container: '#searchbox'
+                    |  })
+                    |);
+                    |search.addWidget(
+                    |  instantsearch.widgets.hits({
+                    |    container: '#hits',
+                    |    template: "<h3>{{name}}</h3><p>{{description}}</p>"
+                    |  })
+                    |);
+                    |search.addWidget(
+                    |  instantsearch.widgets.refinementList({
+                    |    container: '#teams',
+                    |    attributeName: 'teams'
+                    |  })
+                    |);
 
         // Marvel link
         section.slide--horizontal(data-transition='fade-in')
